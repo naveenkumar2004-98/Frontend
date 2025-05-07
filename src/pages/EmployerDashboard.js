@@ -408,7 +408,7 @@ const EmployerDashboard = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.post(
-        'http://localhost:5000/api/projects/assign-project',
+        'https://backend-buwe.onrender.com/api/projects/assign-project',
         { projectId, freelancerId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -471,7 +471,7 @@ const EmployerDashboard = () => {
       }
       const projectId = application.project._id;
       const response = await axios.post(
-        'http://localhost:5000/api/projects/payment/pay',
+        'https://backend-buwe.onrender.com/api/projects/payment/pay',
         { projectId, freelancerId, amount },
         { headers: { Authorization: `Bearer ${token}` } }
       );
