@@ -32,10 +32,10 @@ const PaymentPage = () => {
       navigate('/');
       return;
     }
-    axios.get(`http://localhost:5000/api/projects/${projectId}`, {
+    axios.get(`https://backend-buwe.onrender.com/api/projects/${projectId}`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then(res => setProject(res.data)).catch(() => setSnackbar({ open: true, message: 'Failed to fetch project', severity: 'error' }));
-    axios.get(`http://localhost:5000/api/projects/applications/${applicationId}`, {
+    axios.get(`https://backend-buwe.onrender.com/api/projects/applications/${applicationId}`, {
       headers: { Authorization: `Bearer ${token}` },
     }).then(res => {
       setApplication(res.data);
@@ -47,7 +47,7 @@ const PaymentPage = () => {
 
   const handlePayment = () => {
     const token = localStorage.getItem('token');
-    axios.post('http://localhost:5000/api/projects/payment/pay', {
+    axios.post('https://backend-buwe.onrender.com/api/projects/payment/pay', {
       applicationId,
       freelancerId: application.freelancer._id,
       amount: project.budget,
@@ -61,7 +61,7 @@ const PaymentPage = () => {
 
   const handleRating = () => {
     const token = localStorage.getItem('token');
-    axios.post('http://localhost:5000/api/projects/rate', { applicationId, rating }, {
+    axios.post('https://backend-buwe.onrender.com/api/projects/rate', { applicationId, rating }, {
       headers: { Authorization: `Bearer ${token}` },
     }).then(() => setSnackbar({ open: true, message: 'Rating submitted!', severity: 'success' }))
       .catch(err => setSnackbar({ open: true, message: err.response?.data?.message || 'Rating failed', severity: 'error' }));
@@ -69,7 +69,7 @@ const PaymentPage = () => {
 
   const handleFeedback = () => {
     const token = localStorage.getItem('token');
-    axios.post('http://localhost:5000/api/projects/feedback', { applicationId, feedback }, {
+    axios.post('https://backend-buwe.onrender.com/api/projects/feedback', { applicationId, feedback }, {
       headers: { Authorization: `Bearer ${token}` },
     }).then(() => setSnackbar({ open: true, message: 'Feedback submitted!', severity: 'success' }))
       .catch(err => setSnackbar({ open: true, message: err.response?.data?.message || 'Feedback failed', severity: 'error' }));
