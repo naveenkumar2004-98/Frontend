@@ -45,7 +45,7 @@ import io from 'socket.io-client';
 import PostProject from '../components/PostProject';
 import SearchFreelancers from '../components/SearchFreelancers';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://backend-buwe.onrender.com');
 
 const ChatWindow = ({ user, project, acceptedApplications, onProjectChange }) => {
   const [message, setMessage] = useState('');
@@ -60,7 +60,7 @@ const ChatWindow = ({ user, project, acceptedApplications, onProjectChange }) =>
 
     const fetchMessages = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/projects/messages/${project._id}`, {
+        const res = await axios.get(`https://backend-buwe.onrender.com/api/projects/messages/${project._id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
         });
         setMessages(res.data.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt)));
@@ -285,7 +285,7 @@ const EmployerDashboard = () => {
   const fetchUser = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/me', {
+      const res = await axios.get('https://backend-buwe.onrender.com/api/projects/me', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setUser(res.data);
@@ -301,7 +301,7 @@ const EmployerDashboard = () => {
   const fetchProjects = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/my-projects', {
+      const res = await axios.get('https://backend-buwe.onrender.com/api/projects/my-projects', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects(res.data);
@@ -316,7 +316,7 @@ const EmployerDashboard = () => {
   const fetchApplications = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/applications', {
+      const res = await axios.get('https://backend-buwe.onrender.com/api/projects/applications', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setApplications(res.data);
@@ -387,7 +387,7 @@ const EmployerDashboard = () => {
   const handleDeleteProject = useCallback(async (projectId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/projects/delete/${projectId}`, {
+      await axios.delete(`https://backend-buwe.onrender.com/api/projects/delete/${projectId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProjects((prev) => prev.filter((p) => p._id !== projectId));
@@ -443,7 +443,7 @@ const EmployerDashboard = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `http://localhost:5000/api/projects/applications/${applicationId}/reject`,
+        `https://backend-buwe.onrender.com/api/projects/applications/${applicationId}/reject`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -511,7 +511,7 @@ const EmployerDashboard = () => {
     const token = localStorage.getItem('token');
     axios
       .post(
-        `http://localhost:5000/api/projects/applications/${applicationId}/rate`,
+        `https://backend-buwe.onrender.com/api/projects/applications/${applicationId}/rate`,
         { rating },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -539,7 +539,7 @@ const EmployerDashboard = () => {
     const token = localStorage.getItem('token');
     axios
       .post(
-        `http://localhost:5000/api/projects/applications/${applicationId}/feedback`,
+        `https://backend-buwe.onrender.com/api/projects/applications/${applicationId}/feedback`,
         { feedback: text },
         { headers: { Authorization: `Bearer ${token}` } }
       )
