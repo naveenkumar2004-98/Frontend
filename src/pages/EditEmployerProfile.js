@@ -79,7 +79,7 @@ const EditEmployerProfile = () => {
     }
 
     axios
-      .get('http://localhost:5000/api/projects/me', {
+      .get('https://backend-buwe.onrender.com/api/projects/me', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -105,7 +105,7 @@ const EditEmployerProfile = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.put(
-        'http://localhost:5000/api/projects/update-profile',
+        'https://backend-buwe.onrender.com/api/projects/update-profile',
         formData,
         { headers: { Authorization: `Bearer ${token}` } }
       );
