@@ -86,7 +86,7 @@ const EditProfile = () => {
     }
 
     axios
-      .get('http://localhost:5000/api/projects/me', {
+      .get('https://backend-buwe.onrender.com/api/projects/me', {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -136,7 +136,7 @@ const EditProfile = () => {
     };
     axios
       .put(
-        'http://localhost:5000/api/projects/update-profile',
+        'https://backend-buwe.onrender.com/api/projects/update-profile',
         data,
         { headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' } }
       )
