@@ -12,7 +12,7 @@ import {
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://backend-buwe.onrender.com');
 
 const Chat = ({ projectId }) => {
   const [messages, setMessages] = useState([]);
@@ -24,7 +24,7 @@ const Chat = ({ projectId }) => {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No token found');
-      const res = await axios.get(`http://localhost:5000/api/projects/messages/${projectId}`, {
+      const res = await axios.get(`https://backend-buwe.onrender.com/api/projects/messages/${projectId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setMessages(res.data);
