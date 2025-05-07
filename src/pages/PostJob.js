@@ -17,7 +17,7 @@ const PostJob = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/api/jobs', job, {
+      await axios.post('https://backend-buwe.onrender.com/api/jobs', job, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       alert('Job posted successfully!');
