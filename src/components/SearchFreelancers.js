@@ -32,7 +32,7 @@ const SearchFreelancers = ({ darkMode }) => {
   const handleSearch = async () => {
     try {
       const token = localStorage.getItem('token');
-      const { data } = await axios.get('http://localhost:5000/api/projects/freelancers/search', {
+      const { data } = await axios.get('https://backend-buwe.onrender.com/api/projects/freelancers/search', {
         headers: { Authorization: `Bearer ${token}` },
         params: searchParams,
       });
