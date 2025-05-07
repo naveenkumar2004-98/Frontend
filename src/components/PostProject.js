@@ -28,7 +28,7 @@ const PostProject = ({ open, onClose, onProjectCreated }) => {
       const token = localStorage.getItem('token');
       console.log('Posting project:', project);
       const { data } = await axios.post(
-        'http://localhost:5000/api/projects/create',
+        'https://backend-buwe.onrender.com/api/projects/create',
         project,
         { headers: { Authorization: `Bearer ${token}` } }
       );
