@@ -27,7 +27,7 @@ import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://backend-buwe.onrender.com');
 
 const ProjectApplications = () => {
   const [project, setProject] = useState(null);
@@ -96,7 +96,7 @@ const ProjectApplications = () => {
     try {
       const token = localStorage.getItem('token');
       if (!token) throw new Error('No token found');
-      const res = await axios.get(`http://localhost:5000/api/projects/${projectId}/applications`, {
+      const res = await axios.get(`https://backend-buwe.onrender.com/api/projects/${projectId}/applications`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setProject(res.data.project);
@@ -151,7 +151,7 @@ const ProjectApplications = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/projects/assign-project',
+        'https://backend-buwe.onrender.com/api/projects/assign-project',
         { projectId, freelancerId },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -181,7 +181,7 @@ const ProjectApplications = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `http://localhost:5000/api/projects/applications/${applicationId}/reject`,
+        `https://backend-buwe.onrender.com/api/projects/applications/${applicationId}/reject`,
         {},
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -203,7 +203,7 @@ const ProjectApplications = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/projects/payment/pay',
+        'https://backend-buwe.onrender.com/api/projects/payment/pay',
         { projectId, freelancerId, amount },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -229,7 +229,7 @@ const ProjectApplications = () => {
     const token = localStorage.getItem('token');
     axios
       .post(
-        `http://localhost:5000/api/projects/applications/${applicationId}/rate`,
+        `https://backend-buwe.onrender.com/api/projects/applications/${applicationId}/rate`,
         { rating },
         { headers: { Authorization: `Bearer ${token}` } }
       )
@@ -256,7 +256,7 @@ const ProjectApplications = () => {
     const token = localStorage.getItem('token');
     axios
       .post(
-        `http://localhost:5000/api/projects/applications/${applicationId}/feedback`,
+        `https://backend-buwe.onrender.com/api/projects/applications/${applicationId}/feedback`,
         { feedback: text },
         { headers: { Authorization: `Bearer ${token}` } }
       )
