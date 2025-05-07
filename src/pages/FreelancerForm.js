@@ -13,7 +13,7 @@ const Login = () => {
     e.preventDefault();
     try {
       const endpoint = isLogin ? '/login' : '/register';
-      const { data } = await axios.post(`http://localhost:5000/api/auth${endpoint}`, {
+      const { data } = await axios.post(`https://backend-buwe.onrender.com/api/auth${endpoint}`, {
         username,
         password,
       });
