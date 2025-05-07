@@ -15,7 +15,7 @@ const FindFreelancers = () => {
   useEffect(() => {
     const fetchFreelancers = async () => {
       try {
-        const { data } = await axios.get('http://localhost:5000/api/freelancers');
+        const { data } = await axios.get('https://backend-buwe.onrender.com/api/freelancers');
         setFreelancers(data);
         setLoading(false);
       } catch (error) {
