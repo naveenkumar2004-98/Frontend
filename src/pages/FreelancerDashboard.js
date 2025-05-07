@@ -37,7 +37,7 @@ import StarIcon from '@mui/icons-material/Star';
 import axios from 'axios';
 import io from 'socket.io-client';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://backend-buwe.onrender.com');
 
 const ChatWindow = ({ user, project }) => {
   const [message, setMessage] = useState('');
@@ -51,7 +51,7 @@ const ChatWindow = ({ user, project }) => {
     socket.emit('join_project', project._id);
 
     axios
-      .get(`http://localhost:5000/api/projects/messages/${project._id}`, {
+      .get(`https://backend-buwe.onrender.com/api/projects/messages/${project._id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
       })
       .then((res) => {
@@ -94,7 +94,7 @@ const ChatWindow = ({ user, project }) => {
 
     axios
       .post(
-        'http://localhost:5000/api/projects/payment/request',
+        'https://backend-buwe.onrender.com/api/projects/payment/request',
         { projectId: project._id, amount: project.budget },
         { headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } }
       )
@@ -305,7 +305,7 @@ const FreelancerDashboard = () => {
   const fetchUser = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/me', {
+      const res = await axios.get('https://backend-buwe.onrender.com/api/projects/me', {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('Fetched user:', res.data);
@@ -322,7 +322,7 @@ const FreelancerDashboard = () => {
     const token = localStorage.getItem('token');
     setLoadingProjects(true);
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/open', {
+      const res = await axios.get('https://backend-buwe.onrender.com/api/projects/open', {
         headers: { Authorization: `Bearer ${token}`, 'Cache-Control': 'no-cache' },
       });
       console.log('Fetched open projects:', res.data);
@@ -339,7 +339,7 @@ const FreelancerDashboard = () => {
   const fetchApplications = useCallback(async () => {
     const token = localStorage.getItem('token');
     try {
-      const res = await axios.get('http://localhost:5000/api/projects/applications', {
+      const res = await axios.get('https://backend-buwe.onrender.com/api/projects/applications', {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('Fetched applications:', res.data);
@@ -402,7 +402,7 @@ const FreelancerDashboard = () => {
     const token = localStorage.getItem('token');
     axios
       .post(
-        'http://localhost:5000/api/projects/apply',
+        'https://backend-buwe.onrender.com/api/projects/apply',
         { projectId, coverLetter: 'Applied from dashboard' },
         { headers: { Authorization: `Bearer ${token}` } }
       )
